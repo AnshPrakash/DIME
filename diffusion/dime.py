@@ -516,6 +516,7 @@ class DIME(OffPolicyAlgorithmJax):
             num_atoms
     ):
         actor_loss_value = jnp.array(0)
+        ent_coef_loss = jnp.array(0)
         actor_metrics = [{}]
         for i in range(gradient_steps):
 
