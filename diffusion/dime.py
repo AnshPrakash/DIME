@@ -567,11 +567,11 @@ class DIME(OffPolicyAlgorithmJax):
                     sampler,
                     q_reduce_fn,
                 )
-                ent_coef_state, _ = DIME.update_temperature(target_entropy, ent_coef_state,
+                ent_coef_state, ent_coef_loss = DIME.update_temperature(target_entropy, ent_coef_state,
                                                            actor_metrics[0]['run_costs'])
 
                 target_actor_state = DIME.soft_update_target_actor(policy_tau, actor_state, target_actor_state)
-        log_metrics = {'actor_loss': actor_loss_value, **actor_metrics[0], **log_metrics_critic}
+        log_metrics = {'actor_loss': actor_loss_value, 'ent_coef_loss': ent_coef_loss, **actor_metrics[0], **log_metrics_critic}
         return qf_state, actor_state, target_actor_state, ent_coef_state, key, log_metrics
 
     def predict_critic(self, observation, action):
