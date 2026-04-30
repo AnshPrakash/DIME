@@ -25,7 +25,7 @@ python run_dime.py
 Specific parameters can be set in the terminal such as the learning environment using hydra's multirun function
 
 ```python
-python run_dime.py --multirun env_name=dm_control/humanoid-run
+python run_dime.py --multirun +launcher=slurm_ias env_name=dm_control/humanoid-run
 ```
 
 Detailed hyperparameter specifications are available in the config directory.
